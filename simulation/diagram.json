@@ -1,0 +1,439 @@
+{
+  "version": 1,
+  "author": "Rathore Sonamika",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 40,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -120,
+      "left": -360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 20,
+      "left": -360,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": 160,
+      "left": -360,
+      "attrs": {
+        "temperature": "25",
+        "humidity": "50"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayLight",
+      "top": -120,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayFan",
+      "top": 80,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledLight",
+      "top": -120,
+      "left": 550,
+      "attrs": {
+        "color": "yellow"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledFan",
+      "top": -40,
+      "left": 550,
+      "attrs": {
+        "color": "blue"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledSecurity",
+      "top": 40,
+      "left": 550,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledStatus",
+      "top": 120,
+      "left": 550,
+      "attrs": {
+        "color": "limegreen"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 220,
+      "left": 500,
+      "attrs": {
+        "volume": "0.3"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "securityBtn",
+      "top": -80,
+      "left": -560,
+      "attrs": {
+        "color": "red",
+        "xray": "1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "lightBtn",
+      "top": 20,
+      "left": -560,
+      "attrs": {
+        "color": "yellow",
+        "xray": "1"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "fanBtn",
+      "top": 120,
+      "left": -560,
+      "attrs": {
+        "color": "blue",
+        "xray": "1"
+      }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd",
+      "top": 300,
+      "left": 100,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rLight",
+      "top": -120,
+      "left": 470,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rFan",
+      "top": -40,
+      "left": 470,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rSecurity",
+      "top": 40,
+      "left": 470,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "rStatus",
+      "top": 120,
+      "left": 470,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+
+    [
+      "pir1:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "pir1:OUT",
+      "esp:13",
+      "green",
+      []
+    ],
+    [
+      "pir1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+
+    [
+      "ldr1:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "ldr1:AO",
+      "esp:34",
+      "green",
+      []
+    ],
+    [
+      "ldr1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+
+    [
+      "dht1:VCC",
+      "esp:3V3",
+      "red",
+      []
+    ],
+    [
+      "dht1:SDA",
+      "esp:14",
+      "green",
+      []
+    ],
+    [
+      "dht1:GND",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+
+    [
+      "relayLight:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "relayLight:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "relayLight:IN",
+      "esp:26",
+      "green",
+      []
+    ],
+
+    [
+      "relayFan:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "relayFan:GND",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "relayFan:IN",
+      "esp:25",
+      "green",
+      []
+    ],
+
+    [
+      "esp:18",
+      "rLight:2",
+      "green",
+      []
+    ],
+    [
+      "rLight:1",
+      "ledLight:A",
+      "green",
+      []
+    ],
+    [
+      "ledLight:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "esp:19",
+      "rFan:2",
+      "green",
+      []
+    ],
+    [
+      "rFan:1",
+      "ledFan:A",
+      "green",
+      []
+    ],
+    [
+      "ledFan:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "esp:16",
+      "rSecurity:2",
+      "green",
+      []
+    ],
+    [
+      "rSecurity:1",
+      "ledSecurity:A",
+      "green",
+      []
+    ],
+    [
+      "ledSecurity:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "esp:17",
+      "rStatus:2",
+      "green",
+      []
+    ],
+    [
+      "rStatus:1",
+      "ledStatus:A",
+      "green",
+      []
+    ],
+    [
+      "ledStatus:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+
+    [
+      "buzzer:1",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "buzzer:2",
+      "esp:27",
+      "green",
+      []
+    ],
+
+    [
+      "securityBtn:1.l",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "securityBtn:1.r",
+      "esp:33",
+      "green",
+      []
+    ],
+
+    [
+      "lightBtn:1.l",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "lightBtn:1.r",
+      "esp:32",
+      "green",
+      []
+    ],
+
+    [
+      "fanBtn:1.l",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "fanBtn:1.r",
+      "esp:23",
+      "green",
+      []
+    ],
+
+    [
+      "lcd:VCC",
+      "esp:5V",
+      "red",
+      []
+    ],
+    [
+      "lcd:GND",
+      "esp:GND.3",
+      "black",
+      []
+    ],
+    [
+      "lcd:SDA",
+      "esp:21",
+      "green",
+      []
+    ],
+    [
+      "lcd:SCL",
+      "esp:22",
+      "green",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
